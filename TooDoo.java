@@ -5,13 +5,16 @@ public class TooDoo {
 	public static ArrayList<Task> tasks = new ArrayList<Task>();
 	public static Scanner scanner = new Scanner(System.in);
 
-	public static void newTask()
+	public static void new()
 	{
 	//Get the name of the new task
 	System.out.print("Enter a name: ");
 	String inp_name = scanner.nextLine();
+	//Get the description of the new task
+	System.out.print("Enter a description: ");
+	String inp_description = scanner.nextLine
 	//Add the task to the task list
-	tasks.add(new Task(inp_name));
+	tasks.add(new Task(inp_name, inp_description));
 	//Confirm the creation of the task
 	System.out.println("A new task has been created");
 	}
@@ -43,7 +46,7 @@ public class TooDoo {
 				System.out.println("The task has been checked");
 				break;
 			}
-		}	
+		}
 	}
 
 	public static void clean()
@@ -67,9 +70,18 @@ public class TooDoo {
 		}
 	}
 
+	public static void view()
+	{
+		System.out.print("Enter the name of the task: ");
+		String taskToView = scanner.nextLine();
+		for (int i = 0; i < tasks.size(); i++) {
+			if (taskToView.equals(tasks.get(i).name))
+				System.out.println(tasks.get(i).name);
+			}
+		}
+
 	public static void getInp()
 	{
-
 		while (true) {
 			//ask for command
 			System.out.print("Enter a command: ");
@@ -79,7 +91,7 @@ public class TooDoo {
 				break;
 
 			} else if (inp.equals("new")) {
-				newTask();
+				new();
 
 			} else if (inp.equals("list")) {
 				list();
@@ -92,13 +104,15 @@ public class TooDoo {
 
 			} else if (inp.equals("remove")) {
 				remove();
+			} else if (inp.equals("view")) {
+				view()	
 			}
 		}
 	}
+
 	public static void main(String[] args)
 	{
 		//Welcome Message
 		System.out.println("TooDoo 1.0.0");
 		getInp();
 	}
-}
