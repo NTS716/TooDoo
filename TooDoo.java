@@ -11,7 +11,9 @@ public class TooDoo {
 	System.out.print("Enter a name: ");
 	String inp_name = scanner.nextLine();
 	//Get the description of the new task
-	tasks.add(new Task(inp_name));
+	System.out.print("Enter a description: ");
+	String inp_description = scanner.nextLine();
+	tasks.add(new Task(inp_name, inp_description));
 	//Confirmation message
 	System.out.println("Done.");
 	}
@@ -20,6 +22,7 @@ public class TooDoo {
 	{
 		System.out.println("\nnew - creates a new task");
 		System.out.println("list - views the created tasks");
+		System.out.println("view - views the description of a selected task");
 		System.out.println("check - checks a selected task");
 		System.out.println("clean - removes all checked tasks");
 		System.out.println("remove - removes a selected task");
@@ -46,9 +49,20 @@ public class TooDoo {
 		}
 	}
 	
+	public static void view()
+	{
+		//Prompt for the number of the task		
+		System.out.print("Enter the number of the task: ");
+		String taskToView = scanner.nextLine();
+		//Convert the user input to an integer
+		int taskInt = Integer.parseInt(taskToView);
+		//Print out the description of the task
+		System.out.println("\n" + tasks.get(taskInt - 1).description + "\n");
+	}
+
 	public static void check()
 	{
-		//Prompt for the name of the task
+		//Prompt for the number of the task
 		System.out.print("Enter the number of the task: ");
 		String taskToCheck = scanner.nextLine();
 		//Convert the user input to an integer
@@ -119,6 +133,9 @@ public class TooDoo {
 
 			} else if (inp.equals("remove")) {
 				remove();
+			} else if (inp.equals("view")) {
+				view();
+
 			} else {
 				help();
 			}
