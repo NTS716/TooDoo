@@ -60,7 +60,7 @@ public class TooDoo {
 
 		} catch (IndexOutOfBoundsException e) {
 
-			System.out.println("\nERROR: task does not exist\n");
+			System.err.print("\nERROR: task does not exist\n");
 
 		}
 		//Confirmation message
@@ -88,7 +88,7 @@ public class TooDoo {
 		
 		} catch (IndexOutOfBoundsException e) {
 	
-			System.out.println("\nERROR: task does not exist\n");
+			System.err.print("\nERROR: task does not exist\n");
 
 		}
 		//Confirmation Message
